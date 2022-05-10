@@ -42,9 +42,16 @@ int main(int argc, char* argv[]){
 c언어 에서 char는 1바이트의 크기로 int* ip= (int*)p; 로 char* p의 20바이트를 
 int 로 20바이트를 만들므로 int는 하나당 4바이트이니 5개가 있는것이다.
 
-나중에 수정할게
+해시코드값이 0x21DD09EC 이므로 계산기로 나누기 5를 하면은 1개당 6C65CEC8 이 나온다. 
+다시 한번 확인하기 위해 이 값에 곱하기 5를 한다. 21DD 09E8 값이 4모자르다 . 
+즉 6C65CEC8 을 4번 하고 6C65CEC8+4(= 6C65CEC8) 한 값을 1번하면은 해시코드값이 딱나온다.
+리틀엔디안을 사용하므로 뒤에 부터 /xC8/xCE ~ 순으로 돼는것이다.
 
+$ ./col $(python -c 'print("\xC8\xCE\xC5\x06"*4 + "\xCC\xCE\xC5\x06")')
+
+flag : daddy! I just managed to create a hash collision :)
 
 
 
 도움블로그>
+https://blog.naver.com/yunsolly/222513127348
